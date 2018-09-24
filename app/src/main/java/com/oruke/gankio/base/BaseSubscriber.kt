@@ -1,6 +1,7 @@
 package com.oruke.gankio.base
 
 import android.util.Log
+import com.google.gson.Gson
 import io.reactivex.subscribers.DisposableSubscriber
 
 
@@ -13,6 +14,7 @@ abstract class BaseSubscriber<T> : DisposableSubscriber<Result<T>>() {
         val error = t.error
         if (!error) {
             Log.i("数据", "成功成功成功成功成功成功")
+            Log.i("数据", Gson().toJson(t))
             success(t.results)
         } else {
             Log.i("数据", "失败失败失败失败失败失败")
@@ -26,5 +28,5 @@ abstract class BaseSubscriber<T> : DisposableSubscriber<Result<T>>() {
 //        Toast.makeText(this, "", 5)
     }
 
-    abstract fun success(t: List<T>)
+    abstract fun success(t: ArrayList<T>)
 }
